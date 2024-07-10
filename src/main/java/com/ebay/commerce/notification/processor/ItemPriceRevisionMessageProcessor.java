@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 eBay Inc.
+ * Copyright (c) 2021 eBay Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,22 +16,22 @@
 
 package com.ebay.commerce.notification.processor;
 
-import org.openapitools.client.model.PriorityListingRevisionData;
+import org.openapitools.client.model.ItemPriceRevisionData;
 
-public class PriorityListingRevisionMessageProcessor extends BaseMessageProcessor {
+public class ItemPriceRevisionMessageProcessor extends BaseMessageProcessor {
 
-    public PriorityListingRevisionMessageProcessor(Class type) {
+    public ItemPriceRevisionMessageProcessor(Class type) {
         super(type);
     }
 
     @Override
     protected void processInternal(Object data) {
-        PriorityListingRevisionData priorityListingRevisionData = (PriorityListingRevisionData) data;
+        ItemPriceRevisionData itemPriceRevisionData = (ItemPriceRevisionData) data;
         // do something with the correctly serialized data for this topic.
-        StringBuilder sb = new StringBuilder();
-        sb.append("Data=>");
-        sb.append("itemId: ").append(priorityListingRevisionData.getItemId());
-        sb.append(",priorityListing: ").append(priorityListingRevisionData.getPriorityListing());
-        System.out.println(sb);
+        System.out.println("itemId"+itemPriceRevisionData.getItemId());
+        System.out.println("category"+itemPriceRevisionData.getCategoryId());
+        System.out.println("metaCategory"+itemPriceRevisionData.getMetaCategoryId());
+        System.out.println("currency"+itemPriceRevisionData.getPrice().getCurrency());
+        System.out.println("price"+itemPriceRevisionData.getPrice().getValue());
     }
 }

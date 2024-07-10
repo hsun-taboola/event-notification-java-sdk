@@ -1,4 +1,7 @@
-client.credentials.file: /users/snbanerjee/tmp/ebay-config.yaml
+server.port: 7070
+client.credentials.file: samples/ebay-config.yaml
 environment: PRODUCTION
-endpoint: http://www.testendpoint.com/webhook
-verificationToken: 71745723-d031-455c-bfa5-f90d11b4f20a
+endpoint: https://enough-pup-safely.ngrok-free.app/webhook
+verificationToken: 74942723-d031-455c-bfa5-jr9b61b4f20a
+# destination id: 08eccd29-e76a-42e1-9a07-78662b449b2d
+# subscription id: 414bcfe2-9ad5-487e-9ba1-ce142c108171

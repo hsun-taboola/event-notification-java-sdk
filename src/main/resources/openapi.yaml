@@ -77,3 +77,7 @@ components:
       $ref: definitions/data.yaml#/MarketplaceAccountDeletionData
     PriorityListingRevisionData:
       $ref: definitions/data.yaml#/PriorityListingRevisionData
+    ItemAvailabilityData:
+      $ref: definitions/data.yaml#/ItemAvailabilityData
+    ItemPriceRevisionData:
+      $ref: definitions/data.yaml#/ItemPriceRevisionData

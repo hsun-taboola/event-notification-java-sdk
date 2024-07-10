@@ -62,6 +62,8 @@ For MARKETPLACE_ACCOUNT_DELETION use case simply implement custom logic in [Acco
 **Install and Run**
 ```
 mvn spring-boot:run 
+
+ngrok http --domain=enough-pup-safely.ngrok-free.app 7070
 ```
 
 **Onboard any new topic in 3 simple steps! :**
@@ -100,3 +102,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+## Restrictions
+https://developer.ebay.com/api-docs/commerce/notification/overview.html#restrictions

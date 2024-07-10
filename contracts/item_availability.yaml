@@ -1,0 +1,131 @@
+asyncapi: 2.0.0
+info:
+  title: eBay Notifications
+  version: 1.0.0
+  description: This contract defines eBay notification for ITEM_AVAILABILITY
+channels:
+  ITEM_AVAILABILITY:
+    subscribe:
+      message:
+        $ref: '#/components/messages/message'
+      bindings:
+        http:
+          type: request
+          method: POST
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                enum: ['application/json']
+components:
+  messages:
+    message:
+      headers:
+        type: object
+        properties:
+          X-EBAY-SIGNATURE:
+            description: ECC message signature
+            type: string
+      payload:
+        type: object
+        properties:
+          metadata:
+            $ref: '#/components/schemas/MetaData'
+          notification:
+            $ref: '#/components/schemas/Notification'
+
+  schemas:
+    MetaData:
+      type: object
+      properties:
+        topic:
+          type: string
+          description: 'Topic subscribed to.'
+        schemaVersion:
+          type: string
+          description: 'The schema for this topic.'
+        deprecated:
+          type: boolean
+          description: 'If this is a deprecated schema or topic.'
+          default: 'false'
+
+    Notification:
+      type: object
+      properties:
+        notificationId:
+          type: string
+          description: 'The notification Id.'
+        eventDate:
+          type: string
+          description: 'The event date associated with this notification in UTC.'
+        publishDate:
+          type: string
+          description: 'The message publish date in UTC.'
+        publishAttemptCount:
+          type: integer
+          description: 'The number of attempts made to publish this message.'
+        data:
+         $ref: '#/components/schemas/ItemAvailabilityData'
+
+
+    ItemAvailabilityData:
+      type: object
+      description: "The Item Availability payload."
+      properties:
+        itemId:
+          type: string
+          enum: "The id for the item."
+        listingMarketplaceId:
+          type: string
+          enum:
+            - "EBAY_US"
+            - "EBAY_GB"
+            - "EBAY_AU"
+            - "EBAY_AT"
+            - "EBAY_FR"
+            - "EBAY_DE"
+            - "EBAY_IT"
+            - "EBAY_BE"
+            - "EBAY_NL"
+            - "EBAY_ES"
+            - "EBAY_CH"
+            - "EBAY_HK"
+            - "EBAY_IE"
+            - "EBAY_MY"
+            - "EBAY_CA"
+            - "EBAY_PH"
+            - "EBAY_PL"
+            - "EBAY_SG"
+        buyingOptions:
+          type: array
+          description: "A list of the purchase options available for the item"
+          enum:
+            - "FIXED_PRICE"
+            - "AUCTION"
+            - "BEST_OFFER"
+        seller:
+          type: object
+          description: "The information of the seller"
+          properties:
+            username: string
+            description: "The username of the seller"
+        categoryId:
+          type: string
+          description: "The id for the category"
+        metaCategoryId:
+          type: string
+          description: "The id for the metaCategory"
+        categoryName:
+          type: string
+          description: "The name for the category"
+        categoryPath:
+          type: string
+          description: "The path of the category"
+        availability:
+          type: string
+          enum:
+            - TEMPORARILY_UNAVAILABLE
+            - AVAILABLE
+            - UNAVAILABLE
+

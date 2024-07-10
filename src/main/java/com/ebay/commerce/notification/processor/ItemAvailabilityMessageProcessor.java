@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 eBay Inc.
+ * Copyright (c) 2021 eBay Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,22 +16,23 @@
 
 package com.ebay.commerce.notification.processor;
 
-import org.openapitools.client.model.PriorityListingRevisionData;
+import org.openapitools.client.model.ItemAvailabilityData;
 
-public class PriorityListingRevisionMessageProcessor extends BaseMessageProcessor {
+public class ItemAvailabilityMessageProcessor extends BaseMessageProcessor {
 
-    public PriorityListingRevisionMessageProcessor(Class type) {
+    public ItemAvailabilityMessageProcessor(Class type) {
         super(type);
     }
 
     @Override
     protected void processInternal(Object data) {
-        PriorityListingRevisionData priorityListingRevisionData = (PriorityListingRevisionData) data;
+        ItemAvailabilityData itemAvailabilityData = (ItemAvailabilityData) data;
         // do something with the correctly serialized data for this topic.
-        StringBuilder sb = new StringBuilder();
-        sb.append("Data=>");
-        sb.append("itemId: ").append(priorityListingRevisionData.getItemId());
-        sb.append(",priorityListing: ").append(priorityListingRevisionData.getPriorityListing());
-        System.out.println(sb);
+        System.out.println("itemId"+itemAvailabilityData.getItemId());
+        System.out.println("category"+itemAvailabilityData.getCategoryId());
+        System.out.println("metaCategory"+itemAvailabilityData.getMetaCategoryId());
+        System.out.println("availability"+itemAvailabilityData.getAvailability());
     }
+
+
 }

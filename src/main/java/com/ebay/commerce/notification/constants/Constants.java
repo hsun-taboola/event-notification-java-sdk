@@ -23,7 +23,9 @@ import java.util.regex.Pattern;
 
 public class Constants {
 
-    public static final List<String> APPLICABLE_SCOPES = Arrays.asList(new String[]{"https://api.ebay.com/oauth/api_scope"});
+    public static final List<String> APPLICABLE_SCOPES = Arrays.asList(new String[]{"https://api.ebay.com/oauth/api_scope"
+            ,"https://api.ebay.com/oauth/api_scope/buy.item.stream"
+    });
     public static final String ALGO = "%swith%s";
     public static Pattern KEY_PATTERN = Pattern.compile("-----BEGIN PUBLIC KEY-----(.*?)-----END PUBLIC KEY-----", Pattern.DOTALL);
 

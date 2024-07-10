@@ -1,0 +1,303 @@
+asyncapi: 2.0.0
+info:
+  title: eBay Notifications
+  version: 1.0.0
+  description: This contract defines eBay notification for ITEM_PRICE_REVISION
+channels:
+  ITEM_PRICE_REVISION:
+    subscribe:
+      message:
+        $ref: '#/components/messages/message'
+      bindings:
+        http:
+          type: request
+          method: POST
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                enum: ['application/json']
+components:
+  messages:
+    message:
+      headers:
+        type: object
+        properties:
+          X-EBAY-SIGNATURE:
+            description: ECC message signature
+            type: string
+      payload:
+        type: object
+        properties:
+          metadata:
+            $ref: '#/components/schemas/MetaData'
+          notification:
+            $ref: '#/components/schemas/Notification'
+
+  schemas:
+    MetaData:
+      type: object
+      properties:
+        topic:
+          type: string
+          description: 'Topic subscribed to.'
+        schemaVersion:
+          type: string
+          description: 'The schema for this topic.'
+        deprecated:
+          type: boolean
+          description: 'If this is a deprecated schema or topic.'
+          default: 'false'
+
+    Notification:
+      type: object
+      properties:
+        notificationId:
+          type: string
+          description: 'The notification Id.'
+        eventDate:
+          type: string
+          description: 'The event date associated with this notification in UTC.'
+        publishDate:
+          type: string
+          description: 'The message publish date in UTC.'
+        publishAttemptCount:
+          type: integer
+          description: 'The number of attempts made to publish this message.'
+        data:
+         $ref: '#/components/schemas/ItemPriceRevisionData'
+
+
+    ItemPriceRevisionData:
+      type: object
+      description: "The Item Price Revision payload."
+      properties:
+        itemId:
+          type: string
+          enum: "The id for the item."
+        listingMarketplaceId:
+          type: string
+          enum:
+            - "EBAY_US"
+            - "EBAY_GB"
+            - "EBAY_AU"
+            - "EBAY_AT"
+            - "EBAY_FR"
+            - "EBAY_DE"
+            - "EBAY_IT"
+            - "EBAY_BE"
+            - "EBAY_NL"
+            - "EBAY_ES"
+            - "EBAY_CH"
+            - "EBAY_HK"
+            - "EBAY_IE"
+            - "EBAY_MY"
+            - "EBAY_CA"
+            - "EBAY_PH"
+            - "EBAY_PL"
+            - "EBAY_SG"
+        seller:
+          type: object
+          description: "The information of the seller"
+          properties:
+            username:
+              type: string
+              description: "The username of the seller"
+        price:
+          type: object
+          properties:
+            currency:
+              type: string
+              description: "Currency based on the ISO standard"
+              enum:
+                - "CHF"
+                - "FIM"
+                - "GRD"
+                - "VND"
+                - "BMD"
+                - "BBD"
+                - "XPF"
+                - "DZD"
+                - "MXN"
+                - "CZK"
+                - "IDR"
+                - "ANG"
+                - "COP"
+                - "KYD"
+                - "MVR"
+                - "JMD"
+                - "USD"
+                - "ATS"
+                - "HKD"
+                - "PTE"
+                - "ZAR"
+                - "UAH"
+                - "FJD"
+                - "JOD"
+                - "ESP"
+                - "HUF"
+                - "IEP"
+                - "NZD"
+                - "PHP"
+                - "KRW"
+                - "RON"
+                - "GTQ"
+                - "CAD"
+                - "DEM"
+                - "AUD"
+                - "FRF"
+                - "ILS"
+                - "DOP"
+                - "AZN"
+                - "OMR"
+                - "DKK"
+                - "ITL"
+                - "INR"
+                - "VEF"
+                - "BGN"
+                - "BRL"
+                - "RUB"
+                - "BOB"
+                - "GBP"
+                - "EUR"
+                - "AWG"
+                - "BND"
+                - "XCD"
+                - "MUR"
+                - "CLP"
+                - "CNY"
+                - "PLN"
+                - "SEK"
+                - "MYR"
+                - "NAD"
+                - "HNL"
+                - "JPY"
+                - "BEF"
+                - "RUR"
+                - "UYU"
+                - "NGN"
+                - "PYG"
+                - "NOK"
+                - "TRY"
+                - "BSD"
+                - "QAR"
+                - "SAR"
+                - "SGD"
+                - "TWD"
+                - "PEN"
+                - "CRC"
+                - "KWD"
+                - "NLG"
+                - "TTD"
+                - "NIO"
+            value:
+              type: string
+        minimumBidPrice:
+          type: object
+          properties:
+            currency:
+              type: string
+              description: "Currency based on the ISO standard"
+              enum:
+                - "CHF"
+                - "FIM"
+                - "GRD"
+                - "VND"
+                - "BMD"
+                - "BBD"
+                - "XPF"
+                - "DZD"
+                - "MXN"
+                - "CZK"
+                - "IDR"
+                - "ANG"
+                - "COP"
+                - "KYD"
+                - "MVR"
+                - "JMD"
+                - "USD"
+                - "ATS"
+                - "HKD"
+                - "PTE"
+                - "ZAR"
+                - "UAH"
+                - "FJD"
+                - "JOD"
+                - "ESP"
+                - "HUF"
+                - "IEP"
+                - "NZD"
+                - "PHP"
+                - "KRW"
+                - "RON"
+                - "GTQ"
+                - "CAD"
+                - "DEM"
+                - "AUD"
+                - "FRF"
+                - "ILS"
+                - "DOP"
+                - "AZN"
+                - "OMR"
+                - "DKK"
+                - "ITL"
+                - "INR"
+                - "VEF"
+                - "BGN"
+                - "BRL"
+                - "RUB"
+                - "BOB"
+                - "GBP"
+                - "EUR"
+                - "AWG"
+                - "BND"
+                - "XCD"
+                - "MUR"
+                - "CLP"
+                - "CNY"
+                - "PLN"
+                - "SEK"
+                - "MYR"
+                - "NAD"
+                - "HNL"
+                - "JPY"
+                - "BEF"
+                - "RUR"
+                - "UYU"
+                - "NGN"
+                - "PYG"
+                - "NOK"
+                - "TRY"
+                - "BSD"
+                - "QAR"
+                - "SAR"
+                - "SGD"
+                - "TWD"
+                - "PEN"
+                - "CRC"
+                - "KWD"
+                - "NLG"
+                - "TTD"
+                - "NIO"
+          value:
+            type: string
+        buyingOptions:
+          type: array
+          description: "A list of the purchase options available for the item"
+          enum:
+            - "FIXED_PRICE"
+            - "AUCTION"
+            - "BEST_OFFER"
+        categoryId:
+          type: string
+          description: "The id for the category"
+        metaCategoryId:
+          type: string
+          description: "The id for the metaCategory"
+        categoryName:
+          type: string
+          description: "The name for the category"
+        categoryPath:
+          type: string
+          description: "The path of the category"

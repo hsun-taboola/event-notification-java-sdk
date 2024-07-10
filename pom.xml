@@ -129,6 +129,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                            <additionalProperties>
+                                removeEnumValuePrefix=false
+                            </additionalProperties>
                             <inputSpec>${project.basedir}/src/main/resources/openapi.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <generateApis>false</generateApis>
@@ -137,6 +140,7 @@
                             <generateModelTests>false</generateModelTests>
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateSupportingFiles>false</generateSupportingFiles>
+                            <skipValidateSpec>true</skipValidateSpec>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                             </configOptions>

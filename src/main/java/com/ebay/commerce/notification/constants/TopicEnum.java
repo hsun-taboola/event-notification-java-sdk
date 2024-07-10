@@ -18,5 +18,7 @@ package com.ebay.commerce.notification.constants;
 
 public enum TopicEnum {
     MARKETPLACE_ACCOUNT_DELETION,
-    PRIORITY_LISTING_REVISION
+    PRIORITY_LISTING_REVISION,
+    ITEM_AVAILABILITY,
+    ITEM_PRICE_REVISION,
 }

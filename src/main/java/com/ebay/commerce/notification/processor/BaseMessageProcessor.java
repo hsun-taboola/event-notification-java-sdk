@@ -30,6 +30,8 @@ public abstract class BaseMessageProcessor<T> {
     }
 
     public void process(Message message) throws JsonProcessingException {
+        //        listingMarketplaceId -> EBAY_GB
+        message.getNotification().getData();
         T data = mapper.readValue(mapper.writeValueAsString(message.getNotification().getData()), dataType);
         processInternal(data);
     }

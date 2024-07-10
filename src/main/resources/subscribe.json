@@ -1,0 +1,10 @@
+{
+  "topicId": "ITEM_PRICE_REVISION",
+  "status": "DISABLED",
+  "destinationId": "08eccd29-e76a-42e1-9a07-78662b449b2d",
+  "payload": {
+    "format": "JSON",
+    "schemaVersion": "1.0",
+    "deliveryProtocol": "HTTPS"
+  }
+}
